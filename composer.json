@@ -6,7 +6,6 @@
         "ext-iconv": "*",
         "friendsofsymfony/ckeditor-bundle": "^1.0",
         "friendsofsymfony/user-bundle": "^2.1",
-        "google/appengine-php-sdk": "^1.9",
         "helios-ag/fm-elfinder-bundle": "^8.0",
         "symfony/apache-pack": "^1.0",
         "symfony/console": "^4.0",
