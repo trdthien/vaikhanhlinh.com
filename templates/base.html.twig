@@ -1,12 +1,154 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Công ty TNHH Vải Khánh Linh</title>
+    <link href="" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css" media="screen">
+    <link rel="stylesheet" href="css/slick-theme.css" media="screen">
+    <link rel="stylesheet" href="css/slick.css" media="screen">
+    <link rel="stylesheet" href="css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="css/main.css" media="screen">
+    <link rel="stylesheet" href="css/override-bootstrap.css" media="screen">
+    <script src="scripts/jquery-1.11.2.min.js"></script>
+    <script src="scripts/slick.min.js"></script>
+</head>
+<body>
+    {% block body %}
+    <header>
+        <div class="icon-phone-mobile hidden-md hidden-lg hidden-sm">
+            <i class="fa fa-phone"></i>
+        </div>
+        <div class="container-header">
+            <div class="widget-top-header">
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-xs-3 col-sm-3">
+                            <h1 class="logo">Vaikhanhlinh</h1>
+                        </div>
+                        <div class="col-xs-5 col-sm-5">
+                            <div class="input-search-header hidden-xs">
+                                <input type="text" placeholder="Tìm kiếm"/>
+                                <a href="#">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <div class="contact-info  hidden-xs">
+                                <p class="text-right">Hotline</p>
+                                <h3 class="text-right">090.888.8888</h3>
+                            </div>
+                            <div class="nav-mobile hidden-sm hidden-lg hidden-md text-right">
+                                <span class="fa fa-search btn-search-mobile"></span>
+                                <span class="fa fa-navicon btn-nav-mobile"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-navigation">
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <ul>
+                                <li>
+                                    <a href="#">Trang chủ</a>
+                                </li>
+                                <li>
+                                    <a href="#">Vải thun</a>
+                                    <ul class="sub-navigation">
+                                        <li>
+                                            <a href="#">vải 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">vải 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">vải 1</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Vải thường</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tin tức</a>
+                                </li>
+                                <li>
+                                    <a href="#">Liên hệ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="container-main-content">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-4">
+                    <p>
+                        CÔNG TY TNHH VẢI KHÁNH LINH<br>
+                        Địa chỉ: 22 phường phạm ngũ lão, Q1, Hcm<br>
+                        Điện thoại: 090.999.9999
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <ul class="nav-footer">
+                        <li>
+                            <a href="#">
+                                Chính sách mua hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Chính sách đổi trả
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Chính sách mua hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Chính sách đổi trả
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4"></div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+    {% block javascripts %}
+        <script>
+            $(document).ready(function(){
+                $('.slide-banner-main').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    dots: true,
+                    arrows: false
+                });
+                $('.btn-nav-mobile').click(function () {
+                    if($('.widget-navigation').hasClass('open')){
+                        $('.widget-navigation').removeClass('open');
+                    }else{
+                        $('.widget-navigation').addClass('open');
+                    }
+                });
+            });
+        </script>
+    {% endblock %}
+</body>
 </html>
