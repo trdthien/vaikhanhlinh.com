@@ -2,7 +2,7 @@ apache:
     image: httpd:2.4
     restart: always
     volumes:
-        - ../:/var/www/hello-google-cloud
+        - ../:/var/www/vaikhanhlinh.com
         - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
         - /var/log:/var/log/apache2
     environment:
@@ -14,7 +14,7 @@ apache:
 php:
     image: php71-fpm:latest
     volumes:
-        - ../:/var/www/hello-google-cloud
+        - ../:/var/www/vaikhanhlinh.com
     links:
         - db
 db:
