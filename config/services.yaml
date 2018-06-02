@@ -4,6 +4,7 @@ parameters:
     locale: en
     app.path.upload: /uploads/images
     app.path.product_images: /uploads/images/products
+    app.path.article_images: /uploads/images/articles
 
     env(UPLOAD_ROOT): '%kernel.project_dir%/public/uploads/images'
 
