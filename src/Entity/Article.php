@@ -42,7 +42,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="localize_string", nullable=true)
      */
     private $slug;
 

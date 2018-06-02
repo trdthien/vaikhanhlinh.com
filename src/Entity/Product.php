@@ -30,7 +30,7 @@ class Product
     public $name;
 
     /**
-     * @ORM\Column(type="localize_string")
+     * @ORM\Column(type="localize_string", nullable=true)
      */
     public $slug;
 
