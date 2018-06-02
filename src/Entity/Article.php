@@ -282,10 +282,10 @@ class Article
     }
 
     /**
-     * @param string $slug
+     * @param mixed $slug
      * @return $this
      */
-    public function setSlug(string $slug)
+    public function setSlug($slug)
     {
         $this->slug = $slug;
 
