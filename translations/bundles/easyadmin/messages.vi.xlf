@@ -95,6 +95,26 @@
                 <source>label.content</source>
                 <target>Nội dung</target>
             </trans-unit>
+            <trans-unit id="label.username">
+                <source>label.username</source>
+                <target>Tài khoản</target>
+            </trans-unit>
+            <trans-unit id="label.firstName">
+                <source>label.firstName</source>
+                <target>Họ</target>
+            </trans-unit>
+            <trans-unit id="label.lastName">
+                <source>label.lastName</source>
+                <target>Tên</target>
+            </trans-unit>
+            <trans-unit id="label.lastLogin">
+                <source>label.lastLogin</source>
+                <target>Lần đăng nhập cuối</target>
+            </trans-unit>
+            <trans-unit id="label.roles">
+                <source>label.roles</source>
+                <target>Quyền</target>
+            </trans-unit>
             <!-- generic actions displayed on buttons and links -->
             <trans-unit id="action.new">
                 <source>action.new</source>

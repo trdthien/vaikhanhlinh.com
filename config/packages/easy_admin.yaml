@@ -80,19 +80,19 @@ easy_admin:
             list:
                 fields:
                     - id
-                    - username
+                    - { property: 'username', label: 'label.username' }
                     - email
-                    - firstName
-                    - lastName
-                    - lastLogin
-                    - roles
-                    - enabled
+                    - { property: 'firstName', label: 'label.firstName' }
+                    - { property: 'lastName', label: 'label.lastName' }
+                    - { property: 'lastLogin', label: 'label.lastLogin' }
+                    - { property: 'roles', label: 'label.roles' }
+                    - { property: 'enabled', label: 'label.enabled' }
             form:
                 fields:
-                    - username
+                    - { property: 'username', label: 'label.username' }
                     - email
-                    - firstName
-                    - lastName
+                    - { property: 'firstName', label: 'label.firstName' }
+                    - { property: 'lastName', label: 'label.lastName' }
                     - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'USER': 'ROLE_USER', 'ADMIN': 'ROLE_ADMIN' } } }
 #        Image:
 #            class: App\Entity\Image
