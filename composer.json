@@ -28,7 +28,7 @@
         "preferred-install": {
             "*": "dist"
         },
-        "component-dir": "public/bundles/fm-elfinder",
+        "component-dir": "public/fm-elfinder",
         "sort-packages": true
     },
     "autoload": {
