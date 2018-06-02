@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,9 +37,32 @@ class Category
     public $description;
 
     /**
+     * @ORM\ManyToMany(targetEntity="category", mappedBy="parent")
+     */
+    private $children;
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="category", inversedBy="children")
+     * @ORM\JoinTable(name="subCategory",
+     *  joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="parent_id", referencedColumnName="id")}
+     *     )
+     */
+    private $parent;
+
+    /**
      * @ORM\Column(type="boolean", options={"default" : false}))
      */
     protected $enabled;
+
+    /**
+     * Category constructor.
+     */
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+        $this->parent = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -114,6 +138,38 @@ class Category
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param mixed $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
     }
 
     /**

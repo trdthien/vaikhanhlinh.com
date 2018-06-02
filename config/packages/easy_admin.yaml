@@ -32,8 +32,10 @@ easy_admin:
                     - createdAt
             form:
                 fields:
-                    - { property: 'name' }
+                    - name
+                    - slug
                     - { property: 'description', type: 'ckeditor' }
+                    - parent
                     - enabled
         User:
             class: App\Entity\User
@@ -58,5 +60,5 @@ easy_admin:
             class: App\Entity\Article
         Tag:
             class: App\Entity\Tag
-        Image:
-            class: App\Entity\Image
+#        Image:
+#            class: App\Entity\Image
