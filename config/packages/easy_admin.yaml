@@ -48,6 +48,42 @@ easy_admin:
                 fields:
                     - id
                     - { property: 'title', type: 'text', label: 'label.title' }
+                    - { property: 'image', type: 'image', label: 'label.image', base_path: '%app.path.article_images%' }
+                    - { property: 'author', type: 'text', label: 'label.author' }
+                    - { property: 'tags', type: 'array', label: 'label.tags' }
+                    - { property: 'enabled', label: 'label.enabled' }
+                    - { property: 'createdAt', label: 'label.createdAt' }
+            form:
+                fields:
+                    - { property: 'title', label: 'label.title' }
+                    - { property: 'slug', label: 'label.slug' }
+                    - { property: 'content', type: 'ckeditor', label: 'label.content' }
+                    - { property: 'imageFile', type: 'vich_image', label: 'label.image' }
+                    - { property: 'tags', type: 'entity', type_options: { class: 'App\Entity\Tag', multiple: true }, label: 'label.tags' }
+                    - { property: 'author', type: 'entity', type_options: { class: 'App\Entity\User' }, label: 'label.author' }
+                    - { property: 'enabled', label: 'label.enabled' }
+        Tag:
+            label: menu.tags
+            class: App\Entity\Tag
+            list:
+                fields:
+                    - id
+                    - { property: 'name', type: 'text', label: 'label.name' }
+                    - { property: 'createdAt', label: 'label.createdAt' }
+            form:
+                fields:
+                    - { property: 'name', label: 'label.name' }
+                    - { property: 'slug', label: 'label.slug' }
+                    - { property: 'description', type: 'ckeditor', label: 'label.description' }
+                    - { property: 'parent', label: 'label.parent' }
+                    - { property: 'enabled', label: 'label.enabled' }
+        Article:
+            label: menu.articles
+            class: App\Entity\Article
+            list:
+                fields:
+                    - id
+                    - { property: 'title', type: 'text', label: 'label.title' }
                     - { property: 'image', type: 'text', label: 'label.image' }
                     - { property: 'author', type: 'text', label: 'label.author' }
                     - { property: 'tags', type: 'array', label: 'label.tags' }
