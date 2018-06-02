@@ -134,6 +134,8 @@ class Article
         return $this->title;
     }
 
+
+
     /**
      * @param File|null $image
      */
@@ -277,6 +279,17 @@ class Article
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return $this
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     /**
