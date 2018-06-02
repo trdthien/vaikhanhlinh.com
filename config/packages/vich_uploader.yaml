@@ -5,3 +5,7 @@ vich_uploader:
         product_images:
             uri_prefix: /uploads/images/products
             upload_destination: '%env(UPLOAD_ROOT)%/products'
+
+        article_images:
+            uri_prefix: /uploads/images/articles
+            upload_destination: '%env(UPLOAD_ROOT)%/articles'

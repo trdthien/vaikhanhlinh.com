@@ -5,16 +5,21 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Article.
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
+    use EntityTimeStamp;
+
     /**
      * @var int
      *
@@ -27,7 +32,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="localize_string")
      * @Assert\NotBlank(
      *     message="Title cannot be blank"
      * )
@@ -51,7 +56,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="content", type="localize_string")
      * @Assert\NotBlank(
      *     message="Content cannot be blank"
      * )
@@ -65,11 +70,16 @@ class Article
     private $author;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
-     * @Assert\Valid
+     * @ORM\Column(type="string", length=255)
+     * @var string
      */
-    private $image;
+    public $image;
+
+    /**
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @var array
@@ -77,14 +87,16 @@ class Article
      */
     private $tags;
 
-    use EntityTimeStamp;
+    /**
+     * @ORM\Column(type="boolean", options={"default" : false}))
+     */
+    protected $enabled;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
 
@@ -120,6 +132,49 @@ class Article
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @param File|null $image
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param $image
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
@@ -183,30 +238,6 @@ class Article
     }
 
     /**
-     * Set image.
-     *
-     * @param Image $image
-     *
-     * @return Article
-     */
-    public function setImage(Image $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image.
-     *
-     * @return Image
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Add tag.
      *
      * @param Tag[] $tags
@@ -246,5 +277,24 @@ class Article
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param boolean $enabled
+     * @return $this
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
     }
 }
